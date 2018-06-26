@@ -1,4 +1,7 @@
 # The Validation Tool for EXPRESSCLUSTER Linux Version
+
+This tool can be used for validation of EXPRESSCLUSTER configuration file(clp.conf).
+
 ## Supported OS 
 RHEL 7.x
 ## How to use
