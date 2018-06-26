@@ -1,9 +1,17 @@
 # The Validation Tool for EXPRESSCLUSTER Linux Version
 
 This tool can be used for validation of EXPRESSCLUSTER configuration file(clp.conf).
+Checking items are here.
+* Interconnect IP address check
+* FIP address check
+* Device existence check (disk, mirror disk, hybrid disk)
 
 ## Supported OS 
 RHEL 7.x
+
+## Limitation
+* A individual setting by server is not supported currently.
+
 ## How to use
 1. put clp_validate.sh in your ECX system.
 2. execute `chmod +x clp_validate.sh`
