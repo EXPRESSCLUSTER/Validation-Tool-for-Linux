@@ -1,4 +1,22 @@
 #!/bin/sh
+#
+#         The Validation Tool for EXPRESSCLUSTER Linux Version
+#
+# This tool can be used for validation of EXPRESSCLUSTER configuration
+# file(clp.conf).
+#
+# How to use
+#
+# 1. Put clp_validate.sh in your ECX system.
+# 2. Execute chmod +x clp_validate.sh
+# 3. Execute ./clp_validate.sh
+#    If you have clp.conf of other system, you can supecify the file as below.
+#    e.g.) Put clp.conf under /tmp before execute this command.
+#          ./clp_validate.sh /tmp/clp.conf
+#
+#                                          Contact: tai-takemoto@sx.jp.nec.com
+#
+
 
 DEFAULTCONF="/opt/nec/clusterpro/etc/clp.conf"
 
@@ -21,6 +39,8 @@ ifconfig_check ()
 			return 0
 		fi
 	done
+
+	return 1
 }
 
 ping_check ()
@@ -30,10 +50,10 @@ ping_check ()
 
 	if [ $RETVAL -eq 0 ]
 	then
-		echo "  OK          : $IFNAME"
+		echo "  OK              : $IFNAME"
 	elif [ $RETVAL -eq 1 ]
 	then
-		echo "  NG (Wrong?) : $IFNAME"
+		echo "  NG (Ping Error) : $IFNAME"
 		ret_val=1
 	fi
 }
@@ -55,7 +75,8 @@ if_check ()
 				then
 					ping_check
 				else
-					echo "  NG (Exist?) : $IFNAME"
+					echo "  NG (Exist?)     : $IFNAME"
+					ret_val=1
 				fi
 			else
 				ping_check
